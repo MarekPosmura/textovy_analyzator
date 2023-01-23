@@ -44,6 +44,7 @@ for word in selected_text.split():
     edited_text.append(word.strip(",.-"))
 print(f"There are {len(edited_text)} words in the selected text.")
 
+
 # počet slov začínajících velkým písmenem
 titlecase_words = dict()
 for word in edited_text:
@@ -59,18 +60,38 @@ for word in edited_text:
 print(f"There are {len(uppercase_words)} uppercase words.")
 
 # počet slov psaných malými písmeny
-lowercase_words = dict()
+lowercase_words = list()
 for word in edited_text:
-    if str(word).islower(): 
-        lowercase_words[word] = 1
+    if word.islower():
+        lowercase_words.append(word)
 print(f"There are {len(lowercase_words)} lowercase words.")
-print(lowercase_words)
-
-
-
 
 # počet čísel (ne cifer)
+numeric_string = list()
+for word in edited_text:
+    if word.isnumeric():
+        numeric_string.append(word)
+print(f"There are {len(numeric_string)} numeric strings.")
 
 # sumu všech čísel (ne cifer) v textu
+sum_numbers = 0
+for word in edited_text:
+    if word.isdigit() == True:
+            number = int(word)
+            sum_numbers += number
+print(f"The sum of all the numbers {sum_numbers}.")
+print(line)
 
+# Program zobrazí jednoduchý sloupcový graf, který bude reprezentovat četnost různých délek slov v textu
+tab = print(("LEN|".rjust(4)), "OCCURENCES".rjust(10), "|NR.".rjust(5))
+print(line)
+length = {}
+for word in edited_text:
+    if len(word) not in length:
+        length[len(word)] = 1
+    else:
+        length[len(word)] += 1 
 
+for key, value in sorted(length.items()):
+    print(f"{str(key).rjust(3)}|{'*'*(int(value))} |{value}")
+print(line)
