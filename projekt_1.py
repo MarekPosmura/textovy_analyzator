@@ -7,8 +7,6 @@ discord: Marek P. #5306
 """
 import task_template
 
-# print(task_template.TEXTS[1])
-
 users = {
     "bob":"123",
     "ann":"pass123",
@@ -18,6 +16,7 @@ users = {
 line = 40*"-"
 
 print("Welcome to the text analyzer!")
+
 # vyžádat si jméno a heslo a ověřit údaje
 username = input("Enter your username: ")
 password = input("Enter your password: ")
@@ -29,12 +28,14 @@ else:
     print("Unregistered user, terminating the program...")
     quit()
 print(line)
+
 # výběr textu
 selected_num = input("Enter a number btw. 1 and 3 to select: ")
 if selected_num < "1" or selected_num > "3":
     print("Wrong number, terminating the program...")
     quit()
 print(line)
+
 # úprava textu
 selected_text = task_template.TEXTS[int(selected_num)-1]
 edited_text = list()
@@ -43,7 +44,6 @@ edited_text = list()
 for word in selected_text.split():
     edited_text.append(word.strip(",.-"))
 print(f"There are {len(edited_text)} words in the selected text.")
-
 
 # počet slov začínajících velkým písmenem
 titlecase_words = dict()
